@@ -22,7 +22,7 @@ def minF(x, y, L_cache):
         return L_cache[(x, x)]
     if (x, y) in L_cache:
         return L_cache[(x, y)]
-    l = min(L_cache[(x, x)], minF(x + 1, y, L_cache))
+    l = min(L_cache[(x, y - 1)], L_cache[(y, y)])
     L_cache[(x, y)] = l
     return l
 
@@ -37,7 +37,7 @@ def maxF(x, y, U_cache):
         return U_cache[(x, x)]
     if (x, y) in U_cache:
         return U_cache[(x, y)]
-    u = max(U_cache[(x, x)], maxF(x + 1, y, U_cache))
+    u = max(U_cache[(x, y - 1)], U_cache[(y, y)])
     U_cache[(x, y)] = u
     return u
 
